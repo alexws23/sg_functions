@@ -1,9 +1,9 @@
 Package: motusfunctions
 Title: Process and Clean Raw Sensorgnome Data
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person("Alex", "Smilor", "awsmilor@illinois.edu", role = c("aut", "cre"))
-    person("Mike", "Ward", "mpward@illinois.edu", role = c("aut"))
+    person("Mike", "Ward", "mpward@illinois.edu", role = c("aut")))
 Description: This package was developed to allow for quick processing of raw Sensorgnome data, with the intention that it can be used to diagnose deployment issues in a timely manner and provide the ability to preliminarily check for detections of known tags or beacon transmitters. This package is not meant to replace the data produced my Motus, but can offer an alternative method if processing times are slow.
 Imports:
   dplyr,
