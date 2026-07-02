@@ -2,5 +2,6 @@
 
 export(extract_sg)
 export(read_sg)
+export(read_sg_gps)
 export(runlen_filter)
 export(search_code)
