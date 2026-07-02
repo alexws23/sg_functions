@@ -5,7 +5,7 @@
 #' @param keep_only_ports logical. Specifies if you want to filter out all data except pulse data. Defaults to TRUE. It is highly recommended that you do not change this parameter unless you have experience working with this data.
 #' @export
 
-read_sg <- function(x, tz = "UTC") {
+read_sg_gps <- function(x, tz = "UTC") {
 
   if (endsWith(x,".txt") == FALSE) {
     stop("Please specify a .txt file")
@@ -39,4 +39,3 @@ read_sg <- function(x, tz = "UTC") {
 
   return(data)
 }
-
