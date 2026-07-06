@@ -44,7 +44,7 @@ search_code <- function(x,
     stop("Column names not compatible. Ensure data was read using read_sg()")
   }
 
-  if (endsWith(folder_path,"/") == TRUE) {
+  if (endsWith(output_dir,"/") == TRUE) {
     stop("Please do not include "/" at the end of your output directory")
   }
 
