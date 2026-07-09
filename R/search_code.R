@@ -44,9 +44,12 @@ search_code <- function(x,
     stop("Column names not compatible. Ensure data was read using read_sg()")
   }
 
-  if (endsWith(output_dir,"/") == TRUE) {
-    stop("Please do not include "/" at the end of your output directory")
+  if (is.null(output_dir) == FALSE) {
+    if (endsWith(output_dir,"/") == TRUE) {
+      stop("Please do not include "/" at the end of your output directory")
+    }
   }
+
 
   # Filters
   data <- subset(x, S2N > S2N_cutoff)
