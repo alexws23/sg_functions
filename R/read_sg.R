@@ -33,7 +33,7 @@ read_sg <- function(x,
     "noise"
   )
 
-  dat <- data[, names(ata) != "" & !is.na(names(data))]
+  data <- data[, names(ata) != "" & !is.na(names(data))]
 
   # Convert types
   data$time <- as.numeric(data$time)
