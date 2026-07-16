@@ -3,9 +3,9 @@
 #' This function searches through Sensorgnome data processed with the [read_sg())] to find the specific pulse code set associated with a tag.
 #' @param x a data frame created by the [read_sg()] function.
 #' @param code the tag's 3-number code.
-#' @param pulse_1 the first pulse gap in milliseconds.
-#' @param pulse_2 the second pulse gap in milliseconds.
-#' @param pulse_3 the third pulse gap in milliseconds.
+#' @param pulse_1 the first pulse gap in seconds.
+#' @param pulse_2 the second pulse gap in seconds.
+#' @param pulse_3 the third pulse gap in seconds.
 #' @param upper_freq the upper frequency offset threshold. Defaults to 5.
 #' @param lower_freq the upper frequency offset threshold. Defaults to 3.
 #' @param signal_duration the minimum signal duration cutoff. Defaults to 0.015 milliseconds.
@@ -44,9 +44,12 @@ search_code <- function(x,
     stop("Column names not compatible. Ensure data was read using read_sg()")
   }
 
-  if (endsWith(output_dir,"/") == TRUE) {
-    stop("Please do not include "/" at the end of your output directory")
+  if (is.null(output_dir) == FALSE) {
+    if (endsWith(output_dir,"/") == TRUE) {
+      stop("Please do not include "/" at the end of your output directory")
+    }
   }
+
 
   # Filters
   data <- subset(x, S2N > S2N_cutoff)
@@ -87,6 +90,11 @@ search_code <- function(x,
 
   all_ports <- dplyr::bind_rows(results, .id = "port")
 
+  if (dim(all_ports)[1] == 0) {
+    message("Tag not detected in dataset")
+    return(NULL)
+  }else{
+
   all_ports$port <- gsub("p", "", all_ports$port)
   sg_data <- all_ports[order(all_ports$time), ]
   sg_data$time <- as.POSIXct(sg_data$time, origin="1970-01-01", tz = "UTC")
@@ -105,4 +113,6 @@ search_code <- function(x,
   }
 
   return(tag_sg)
+
+  }
 }

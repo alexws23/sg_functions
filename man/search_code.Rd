@@ -25,11 +25,11 @@ search_code(
 
 \item{code}{the tag's 3-number code.}
 
-\item{pulse_1}{the first pulse gap in milliseconds.}
+\item{pulse_1}{the first pulse gap in seconds.}
 
-\item{pulse_2}{the second pulse gap in milliseconds.}
+\item{pulse_2}{the second pulse gap in seconds.}
 
-\item{pulse_3}{the third pulse gap in milliseconds.}
+\item{pulse_3}{the third pulse gap in seconds.}
 
 \item{upper_freq}{the upper frequency offset threshold. Defaults to 5.}
 
