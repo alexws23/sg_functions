@@ -25,6 +25,8 @@ read_sg <- function(x,
     data <- data[grepl("^p", data$V1), ]
   }
 
+  data[, -c(5)]
+
   colnames(data) <- c(
     "port",
     "time",
@@ -33,8 +35,6 @@ read_sg <- function(x,
     "noise"
   )
 
-  data |>
-  dplyr::select(c(port, time, freq, power, noise))
   # Convert types
   data$time <- as.numeric(data$time)
   data$power <- as.numeric(data$power)
