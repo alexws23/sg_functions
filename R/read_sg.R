@@ -43,6 +43,3 @@ read_sg <- function(x,
 
   return(data)
 }
-
-all_data |>
-  dplyr::filter(port == "31.3025")
