@@ -1,9 +1,10 @@
 Package: sgfunctions
 Title: Process and Clean Raw Sensorgnome Data
-Version: 0.0.0.9000
+Version: 0.0.1.0000
 Authors@R: 
     person("Alex", "Smilor", email = "awsmilor@illinois.edu", role = c("aut", "cre"))
 Description: This package was developed to allow for quick processing of raw Sensorgnome data, with the intention that it can be used to diagnose deployment issues in a timely manner and provide the ability to preliminarily check for detections of known tags or beacon transmitters. This package is not meant to replace the data produced my Motus, but can offer an alternative method if processing times are slow.
+Config/Recent Updates: The 0.0.1.0000 version of this package now allows for the processing of Sensorgnome data from receivers with 434 antennas and the ability to create a deployment timeline for diagnostic purposes. Future updates will further streamline the ability to process data from CTT tags.
 Imports:
   dplyr,
   lubridate,
@@ -14,5 +15,5 @@ License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0.9000
-URL: https://github.com/alexws23/motusfunctions
-BugReports: https://github.com/alexws23/motusfunctions/issues
+URL: https://github.com/alexws23/sgfunctions
+BugReports: https://github.com/alexws23/sgfunctions/issues
