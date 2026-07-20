@@ -12,36 +12,33 @@ read_sg <- function(x,
      stop("Please specify a .txt file")
   }
 
-  # Read data
-  data <- utils::read.csv(
-    x,
-    header = FALSE,
-    fill = TRUE,
-    stringsAsFactors = FALSE
-  )
+  lines <- readLines(x)
+
+  # Split each line by comma
+  split_lines <- strsplit(lines, ",")
+
+  # Force each row to have exactly 6 columns
+  split_fixed <- lapply(split_lines, function(x) {
+    length(x) <- 6   # pad with NAs or truncate to length 6
+    x
+  })
+
+  # Convert to data frame
+  data <- as.data.frame(do.call(rbind, split_fixed), stringsAsFactors = FALSE)
+
+  # Assign column names
+  colnames(data) <- c("port","time","freq","power","noise","S2N")
 
   if (keep_only_ports == TRUE) {
     # Keep only ports
-    data <- data[grepl("^p", data$V1), ]
+    # Remove rows starting with C, G, or S
+    data <- data[!substr(data$port, 1, 1) %in% c("C", "G", "S"), ]
   }
-
-  colnames(data) <- c(
-    "port",
-    "time",
-    "freq",
-    "power",
-    "noise"
-  )
-
-  data <- data[, names(data) != "" & !is.na(names(data))]
 
   # Convert types
   data$time <- as.numeric(data$time)
   data$power <- as.numeric(data$power)
   data$noise <- as.numeric(data$noise)
-
-  # Signal-to-noise ratio
-  data$S2N <- abs(data$noise - data$power)
 
   return(data)
 }
